@@ -6,8 +6,7 @@ import TerminalBadge from '@/components/ui/TerminalBadge';
 import ProjectDetailModal from '@/components/ui/ProjectDetailModal';
 import { PROJECTS_DATA } from '@/data/portfolioData';
 import { Project } from '@/types/portfolio';
-import { ExternalLink, Github, ArrowUpRight, Terminal, Layers, Cpu, Database, Flame } from 'lucide-react';
-import { soundFx } from '@/lib/sound';
+import { Github, ArrowUpRight, Cpu, Database, Flame, Layers } from 'lucide-react';
 
 type CategoryFilter = 'All' | 'Systems & OOP' | 'Data & Analytics' | 'IoT & Embedded';
 
@@ -39,10 +38,9 @@ export default function ProjectsSection() {
     <section id="projects" className="py-20 lg:py-28 border-t border-border-subtle bg-bg-secondary/30 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          index="03/07"
-          tag="PROJECT_ARCHIVE"
-          title="Engineered Systems & Field Projects"
-          description="Curated technical archive of practical software systems built with rigorous OOP paradigms, statistical data analysis, and hardware telemetry."
+          badge="Work"
+          title="Featured Projects"
+          description="A selection of software projects focused on object-oriented system design, statistical energy anomaly detection, banking transaction logging, and hardware telemetry."
         />
 
         {/* Filter Bar */}
@@ -51,71 +49,63 @@ export default function ProjectsSection() {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => {
-                  soundFx.playClick();
-                  setActiveCategory(cat);
-                }}
-                className={`px-3 py-1.5 rounded font-mono text-xs tracking-wider transition-all ${
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
                   activeCategory === cat
-                    ? 'bg-accent-primary text-bg-primary font-bold shadow-md shadow-accent-primary/10'
+                    ? 'bg-accent-primary text-bg-primary font-semibold shadow-md shadow-accent-primary/10'
                     : 'bg-bg-elevated text-text-secondary border border-border-subtle hover:border-accent-primary/40 hover:text-text-primary'
                 }`}
               >
-                {cat.toUpperCase()}
+                {cat}
               </button>
             ))}
           </div>
 
-          <div className="font-mono text-xs text-text-muted">
-            INDEXED_RECORDS: <span className="text-accent-primary font-bold">{filteredProjects.length}</span> / {PROJECTS_DATA.length}
+          <div className="text-xs text-text-muted font-sans">
+            Showing <span className="text-accent-primary font-semibold">{filteredProjects.length}</span> of {PROJECTS_DATA.length} projects
           </div>
         </div>
 
-        {/* Projects Editorial Archive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
           {filteredProjects.map((project) => {
             const IconComp = getProjectIcon(project.category);
             return (
               <div
                 key={project.id}
-                className="group relative rounded-xl border border-border-strong bg-bg-secondary p-6 sm:p-8 flex flex-col justify-between hover:border-accent-primary/60 transition-all duration-300 shadow-xl corner-bracket"
+                className="group relative rounded-2xl border border-border-subtle bg-bg-secondary p-7 sm:p-8 flex flex-col justify-between hover:border-accent-primary/60 transition-all duration-300 shadow-xl"
               >
                 <div>
                   {/* Top Header Strip */}
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <div className="flex items-center gap-2">
-                      <TerminalBadge variant="accent">
-                        {project.fieldCode}
-                      </TerminalBadge>
-                      <TerminalBadge variant="secondary">
-                        {project.category}
-                      </TerminalBadge>
-                    </div>
+                    <TerminalBadge variant="secondary">
+                      {project.category}
+                    </TerminalBadge>
 
-                    <div className="p-2 rounded bg-bg-elevated border border-border-subtle text-accent-primary group-hover:scale-110 transition-transform">
+                    <div className="p-2.5 rounded-xl bg-bg-elevated border border-border-subtle text-accent-primary group-hover:scale-105 transition-transform">
                       <IconComp className="w-4 h-4" />
                     </div>
                   </div>
 
                   {/* Title & Subtitle */}
-                  <h3 className="font-heading font-black text-xl sm:text-2xl text-text-primary group-hover:text-accent-primary transition-colors tracking-tight">
+                  <h3 className="font-heading font-bold text-xl sm:text-2xl text-text-primary group-hover:text-accent-primary transition-colors tracking-tight">
                     {project.title}
                   </h3>
-                  <p className="font-mono text-xs text-accent-secondary mt-1 mb-4">
+                  <p className="font-sans text-xs text-text-secondary mt-1 mb-4 font-medium">
                     {project.subtitle}
                   </p>
 
                   {/* Summary */}
-                  <p className="font-sans text-xs sm:text-sm text-text-secondary leading-relaxed mb-5">
+                  <p className="font-sans text-sm text-text-secondary leading-relaxed mb-5">
                     {project.summary}
                   </p>
 
                   {/* Key Highlights list */}
-                  <div className="space-y-1.5 mb-6">
+                  <div className="space-y-2 mb-6">
                     {project.keyFeatures.slice(0, 2).map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-2 font-sans text-xs text-text-muted">
-                        <span className="text-accent-primary font-mono mt-0.5">•</span>
-                        <span>{feat}</span>
+                      <div key={idx} className="flex items-start gap-2.5 font-sans text-xs text-text-muted">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-primary mt-1.5 shrink-0" />
+                        <span className="leading-relaxed">{feat}</span>
                       </div>
                     ))}
                   </div>
@@ -128,7 +118,7 @@ export default function ProjectsSection() {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="font-mono text-[11px] px-2 py-0.5 rounded bg-bg-elevated border border-border-subtle text-text-secondary"
+                        className="font-mono text-[11px] px-2.5 py-1 rounded-md bg-bg-elevated border border-border-subtle text-text-secondary"
                       >
                         {tech}
                       </span>
@@ -138,14 +128,11 @@ export default function ProjectsSection() {
                   {/* Action Buttons */}
                   <div className="flex items-center justify-between pt-1">
                     <button
-                      onClick={() => {
-                        soundFx.playSelect();
-                        setSelectedProject(project);
-                      }}
-                      className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-accent-primary hover:text-accent-secondary transition-colors group-hover:translate-x-0.5 transition-transform"
+                      onClick={() => setSelectedProject(project)}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-primary hover:text-accent-secondary transition-colors"
                     >
-                      <span>INSPECT SPECIFICATIONS</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <span>View Specifications</span>
+                      <ArrowUpRight className="w-4 h-4" />
                     </button>
 
                     {project.githubUrl && (
@@ -153,12 +140,11 @@ export default function ProjectsSection() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => soundFx.playClick()}
-                        className="inline-flex items-center gap-1.5 font-mono text-xs text-text-muted hover:text-text-primary transition-colors"
-                        title="View Project Source Repository on GitHub"
+                        className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-text-primary transition-colors"
+                        title="View Project on GitHub"
                       >
-                        <Github className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">GitHub</span>
+                        <Github className="w-4 h-4" />
+                        <span>GitHub</span>
                       </a>
                     )}
                   </div>

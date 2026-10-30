@@ -8,11 +8,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://utkarsh-portfolio.v
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Utkarsh Kushwaha — Digital Field Notes | Software Developer',
+    default: 'Utkarsh Kushwaha — Software Developer | Portfolio',
     template: '%s | Utkarsh Kushwaha',
   },
   description:
-    'Utkarsh Kushwaha is a B.Tech Computer Science student at NIET (AKTU) with an 8.54 CGPA, software developer, hackathon finalist (SIH 2026 Top 45), and open-source contributor (GSSoC 2026). Explore engineered systems, 3D telemetry, and digital field notes.',
+    'Utkarsh Kushwaha is a B.Tech Computer Science student at NIET (AKTU) with an 8.54 CGPA, software developer, hackathon finalist (SIH 2026), and open-source contributor (GSSoC 2026). Explore engineered systems and projects.',
   keywords: [
     'Utkarsh Kushwaha',
     'Utkarsh Kushwaha Portfolio',
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    title: 'Utkarsh Kushwaha — Digital Field Notes | Software Developer',
+    title: 'Utkarsh Kushwaha — Software Developer | Portfolio',
     description:
-      'Immersive personal portfolio and technical field archive of Utkarsh Kushwaha, B.Tech CSE student at NIET Greater Noida (AKTU).',
-    siteName: 'Utkarsh Kushwaha — Digital Field Notes',
+      'Personal portfolio of Utkarsh Kushwaha, B.Tech CSE student at NIET Greater Noida (AKTU). Software developer and problem solver.',
+    siteName: 'Utkarsh Kushwaha — Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Utkarsh Kushwaha — Digital Field Notes',
+    title: 'Utkarsh Kushwaha — Software Developer',
     description:
       'Computer Science Undergraduate | Software Developer | Hackathon Finalist | Open Source Contributor',
   },
@@ -102,8 +102,8 @@ export default function RootLayout({
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         url: siteUrl,
-        name: 'Utkarsh Kushwaha — Digital Field Notes',
-        description: 'Personal portfolio and technical archive of software engineer Utkarsh Kushwaha',
+        name: 'Utkarsh Kushwaha — Portfolio',
+        description: 'Personal portfolio of software developer Utkarsh Kushwaha',
         publisher: {
           '@id': `${siteUrl}/#person`,
         },

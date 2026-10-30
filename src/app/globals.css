@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0B0E0C;
-  --bg-secondary: #121713;
-  --bg-elevated: #192019;
-  --accent-primary: #C7F36B;
-  --accent-secondary: #A9D957;
-  --text-primary: #F0F3ED;
-  --text-secondary: #A0AAA0;
-  --text-muted: #68736A;
-  --border-subtle: #29332B;
+  --bg-primary: #111820;
+  --bg-secondary: #19232C;
+  --bg-elevated: #202D37;
+  --accent-primary: #73DCE8;
+  --accent-secondary: #42B9CC;
+  --text-primary: #F2F6F7;
+  --text-secondary: #A9B8C0;
+  --text-muted: #788A94;
+  --border-subtle: #30404A;
+  --border-strong: #3F5361;
 }
 
 html {
@@ -32,16 +33,15 @@ html {
 }
 
 body {
-  font-family: var(--font-inter), sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  selection-background-color: #C7F36B;
 }
 
 ::selection {
-  background-color: #C7F36B;
-  color: #0B0E0C;
+  background-color: #73DCE8;
+  color: #111820;
 }
 
 /* Custom Minimal Scrollbar */
@@ -51,63 +51,31 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0E0C;
+  background: #111820;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #29332B;
-  border-radius: 2px;
+  background: #30404A;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C7F36B;
+  background: #73DCE8;
 }
 
-/* Noise texture overlay */
-.bg-grid-pattern {
-  background-size: 32px 32px;
+/* Subtle tech grid background */
+.bg-grid-subtle {
+  background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(41, 51, 43, 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(41, 51, 43, 0.3) 1px, transparent 1px);
+    linear-gradient(to right, rgba(48, 64, 74, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 64, 74, 0.25) 1px, transparent 1px);
 }
 
-.technical-glow {
-  box-shadow: 0 0 20px rgba(199, 243, 107, 0.15);
+/* Soft cyan glow effect */
+.cyan-glow {
+  box-shadow: 0 0 25px rgba(115, 220, 232, 0.12);
 }
 
-.technical-border {
-  border: 1px solid #29332B;
-}
-
-.technical-border:hover {
-  border-color: rgba(199, 243, 107, 0.4);
-}
-
-/* Corner markers for brutalist / editorial aesthetic */
-.corner-bracket {
-  position: relative;
-}
-
-.corner-bracket::before,
-.corner-bracket::after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-color: #C7F36B;
-  pointer-events: none;
-}
-
-.corner-bracket::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid #C7F36B;
-  border-left: 2px solid #C7F36B;
-}
-
-.corner-bracket::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid #C7F36B;
-  border-right: 2px solid #C7F36B;
+.cyan-glow-subtle {
+  box-shadow: 0 0 15px rgba(115, 220, 232, 0.08);
 }

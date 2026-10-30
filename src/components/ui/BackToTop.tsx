@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
-import { soundFx } from '@/lib/sound';
 
 export default function BackToTop() {
   const [show, setShow] = useState(false);
@@ -16,7 +15,6 @@ export default function BackToTop() {
   }, []);
 
   const scrollToTop = () => {
-    soundFx.playClick();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -25,8 +23,8 @@ export default function BackToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-40 p-3 rounded border border-border-subtle bg-bg-secondary/80 backdrop-blur-md text-text-secondary hover:text-accent-primary hover:border-accent-primary transition-all duration-200 shadow-xl focus:outline-none focus:ring-1 focus:ring-accent-primary"
-      aria-label="Back to top of page"
+      className="fixed bottom-6 right-6 z-40 p-3 rounded-full border border-border-subtle bg-bg-secondary/90 backdrop-blur-md text-text-secondary hover:text-accent-primary hover:border-accent-primary transition-all duration-200 shadow-xl focus:outline-none focus:ring-2 focus:ring-accent-primary/40"
+      aria-label="Back to top"
       title="Return to top"
     >
       <ArrowUp className="w-4 h-4" />

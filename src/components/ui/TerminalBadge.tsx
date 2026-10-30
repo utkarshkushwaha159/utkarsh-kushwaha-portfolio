@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 
 interface TerminalBadgeProps {
   children: React.ReactNode;
-  variant?: 'accent' | 'secondary' | 'muted' | 'alert';
+  variant?: 'accent' | 'secondary' | 'muted';
   className?: string;
   dot?: boolean;
 }
@@ -16,27 +16,19 @@ export default function TerminalBadge({
 }: TerminalBadgeProps) {
   const variantStyles = {
     accent: 'border-accent-primary/30 text-accent-primary bg-accent-primary/10',
-    secondary: 'border-border-strong text-text-secondary bg-bg-elevated',
-    muted: 'border-border-subtle text-text-muted bg-bg-secondary/70',
-    alert: 'border-amber-500/40 text-amber-300 bg-amber-500/10',
-  };
-
-  const dotColors = {
-    accent: 'bg-accent-primary',
-    secondary: 'bg-accent-secondary',
-    muted: 'bg-text-muted',
-    alert: 'bg-amber-400',
+    secondary: 'border-border-subtle text-text-secondary bg-bg-secondary',
+    muted: 'border-border-subtle text-text-muted bg-bg-primary',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wide uppercase px-2.5 py-0.5 rounded border',
+        'inline-flex items-center gap-1.5 font-mono text-xs px-2.5 py-1 rounded-full border transition-colors',
         variantStyles[variant],
         className
       )}
     >
-      {dot && <span className={cn('w-1.5 h-1.5 rounded-full animate-pulse', dotColors[variant])} />}
+      {dot && <span className="w-1.5 h-1.5 rounded-full bg-accent-primary" />}
       {children}
     </span>
   );

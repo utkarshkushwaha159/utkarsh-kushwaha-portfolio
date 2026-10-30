@@ -56,3 +56,4 @@ export interface EducationInfo {
   location: string;
   highlights: string[];
 }
+

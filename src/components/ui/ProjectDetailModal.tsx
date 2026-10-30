@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { X, ExternalLink, Github, CheckCircle2, Terminal, Cpu } from 'lucide-react';
+import { X, ExternalLink, Github, CheckCircle2, Layers } from 'lucide-react';
 import { Project } from '@/types/portfolio';
 import TerminalBadge from './TerminalBadge';
-import { soundFx } from '@/lib/sound';
 
 interface ProjectDetailModalProps {
   project: Project | null;
@@ -33,38 +32,32 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-bg-primary/90 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-bg-primary/80 backdrop-blur-md animate-in fade-in duration-200"
     >
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg border border-border-strong bg-bg-secondary p-6 sm:p-8 shadow-2xl corner-bracket focus:outline-none"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-border-subtle bg-bg-secondary p-6 sm:p-8 shadow-2xl focus:outline-none"
         tabIndex={-1}
       >
         {/* Top Header */}
-        <div className="flex items-start justify-between gap-4 pb-4 border-b border-border-subtle">
+        <div className="flex items-start justify-between gap-4 pb-5 border-b border-border-subtle">
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <TerminalBadge variant="accent" dot>
-                {project.fieldCode}
-              </TerminalBadge>
-              <TerminalBadge variant="secondary">
+            <div className="flex items-center gap-2 mb-2.5">
+              <TerminalBadge variant="accent">
                 {project.category}
               </TerminalBadge>
             </div>
             <h2 id="modal-project-title" className="font-heading text-xl sm:text-2xl font-bold text-text-primary">
               {project.title}
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-accent-secondary mt-1">
+            <p className="font-sans text-xs sm:text-sm text-text-secondary mt-1">
               {project.subtitle}
             </p>
           </div>
 
           <button
-            onClick={() => {
-              soundFx.playClick();
-              onClose();
-            }}
-            className="p-2 rounded border border-border-subtle text-text-muted hover:text-text-primary hover:border-accent-primary transition-colors focus:outline-none focus:ring-1 focus:ring-accent-primary"
-            aria-label="Close project modal"
+            onClick={onClose}
+            className="p-2 rounded-lg border border-border-subtle text-text-muted hover:text-text-primary hover:border-accent-primary transition-colors focus:outline-none focus:ring-1 focus:ring-accent-primary"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
@@ -72,21 +65,21 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
 
         {/* Content Body */}
         <div className="mt-6 space-y-6">
-          {/* Executive Overview */}
+          {/* Overview */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-accent-primary mb-2 flex items-center gap-2">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>// 01. Overview & Operational Scope</span>
+            <h3 className="font-heading font-semibold text-sm text-text-primary mb-2 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-accent-primary" />
+              <span>Project Overview</span>
             </h3>
-            <p className="font-sans text-sm text-text-secondary leading-relaxed bg-bg-elevated/50 p-4 rounded border border-border-subtle">
+            <p className="font-sans text-sm text-text-secondary leading-relaxed bg-bg-elevated/60 p-4 rounded-xl border border-border-subtle">
               {project.summary}
             </p>
           </div>
 
           {/* Problem & Solution Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 rounded border border-red-900/30 bg-red-950/10">
-              <h4 className="font-mono text-xs uppercase tracking-wider text-red-300 font-bold mb-2">
+            <div className="p-4 rounded-xl border border-border-subtle bg-bg-elevated/40">
+              <h4 className="font-sans text-xs uppercase tracking-wider text-text-primary font-semibold mb-2">
                 Problem Statement
               </h4>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
@@ -94,9 +87,9 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
               </p>
             </div>
 
-            <div className="p-4 rounded border border-accent-primary/30 bg-accent-primary/5">
-              <h4 className="font-mono text-xs uppercase tracking-wider text-accent-primary font-bold mb-2">
-                Architectural Solution
+            <div className="p-4 rounded-xl border border-accent-primary/20 bg-accent-primary/5">
+              <h4 className="font-sans text-xs uppercase tracking-wider text-accent-primary font-semibold mb-2">
+                Proposed Solution
               </h4>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
                 {project.proposedSolution}
@@ -104,22 +97,19 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
             </div>
           </div>
 
-          {/* System Architecture Details */}
+          {/* Architecture Details */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-accent-primary mb-3 flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5" />
-              <span>// 02. Engineering Specifications & Data Flow</span>
+            <h3 className="font-heading font-semibold text-sm text-text-primary mb-3">
+              Architecture & System Flow
             </h3>
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {project.architectureDetails.map((detail, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-3 p-3 rounded bg-bg-elevated/40 border border-border-subtle font-sans text-xs text-text-secondary"
+                  className="flex items-start gap-3 p-3.5 rounded-xl bg-bg-elevated/40 border border-border-subtle font-sans text-xs text-text-secondary"
                 >
-                  <span className="font-mono text-accent-primary font-bold mt-0.5">
-                    {`[#0${idx + 1}]`}
-                  </span>
-                  <span>{detail}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-primary mt-1.5 shrink-0" />
+                  <span className="leading-relaxed">{detail}</span>
                 </div>
               ))}
             </div>
@@ -127,33 +117,32 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
 
           {/* Key Features */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-accent-primary mb-3 flex items-center gap-2">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>// 03. Core Capabilities</span>
+            <h3 className="font-heading font-semibold text-sm text-text-primary mb-3">
+              Key Features
             </h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {project.keyFeatures.map((feat, idx) => (
-                <li
+                <div
                   key={idx}
-                  className="flex items-start gap-2 p-2.5 rounded bg-bg-elevated/30 border border-border-subtle text-xs text-text-secondary font-sans"
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-bg-elevated/30 border border-border-subtle text-xs text-text-secondary"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-primary mt-1.5 shrink-0" />
-                  <span>{feat}</span>
-                </li>
+                  <CheckCircle2 className="w-4 h-4 text-accent-primary mt-0.5 shrink-0" />
+                  <span className="leading-relaxed">{feat}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Technologies Used */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">
-              Technology Stack
+            <h3 className="font-sans text-xs uppercase tracking-wider text-text-muted mb-2.5">
+              Technologies & Tools
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="font-mono text-xs px-2.5 py-1 rounded bg-bg-elevated border border-border-strong text-accent-secondary"
+                  className="font-mono text-xs px-3 py-1 rounded-full bg-bg-elevated border border-border-subtle text-accent-primary"
                 >
                   {tech}
                 </span>
@@ -163,9 +152,9 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
         </div>
 
         {/* Modal Actions Footer */}
-        <div className="mt-8 pt-4 border-t border-border-subtle flex flex-wrap items-center justify-between gap-4">
-          <div className="font-mono text-xs text-text-muted">
-            Status: Documented & Validated Field Note
+        <div className="mt-8 pt-5 border-t border-border-subtle flex flex-wrap items-center justify-between gap-4">
+          <div className="text-xs text-text-muted">
+            Verified Project Record
           </div>
 
           <div className="flex items-center gap-3">
@@ -174,22 +163,18 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => soundFx.playClick()}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded border border-border-subtle text-text-primary hover:border-accent-primary hover:text-accent-primary text-xs font-mono transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border-subtle text-text-primary hover:border-accent-primary hover:text-accent-primary text-xs font-medium transition-colors"
               >
                 <Github className="w-4 h-4" />
-                <span>Source Repository</span>
-                <ExternalLink className="w-3 h-3 text-text-muted" />
+                <span>GitHub Repository</span>
+                <ExternalLink className="w-3.5 h-3.5 text-text-muted" />
               </a>
             )}
             <button
-              onClick={() => {
-                soundFx.playClick();
-                onClose();
-              }}
-              className="px-4 py-2 rounded bg-accent-primary text-bg-primary hover:bg-accent-secondary text-xs font-mono font-bold transition-colors"
+              onClick={onClose}
+              className="px-5 py-2 rounded-lg bg-accent-primary text-bg-primary hover:bg-accent-secondary text-xs font-semibold transition-colors"
             >
-              Close Record
+              Close
             </button>
           </div>
         </div>

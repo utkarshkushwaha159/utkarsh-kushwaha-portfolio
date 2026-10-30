@@ -11,23 +11,23 @@ const config: Config = {
     extend: {
       colors: {
         bg: {
-          primary: '#0B0E0C',
-          secondary: '#121713',
-          elevated: '#192019',
+          primary: '#111820',
+          secondary: '#19232C',
+          elevated: '#202D37',
         },
         accent: {
-          primary: '#C7F36B',
-          secondary: '#A9D957',
-          glow: 'rgba(199, 243, 107, 0.15)',
+          primary: '#73DCE8',
+          secondary: '#42B9CC',
+          glow: 'rgba(115, 220, 232, 0.15)',
         },
         text: {
-          primary: '#F0F3ED',
-          secondary: '#A0AAA0',
-          muted: '#68736A',
+          primary: '#F2F6F7',
+          secondary: '#A9B8C0',
+          muted: '#788A94',
         },
         border: {
-          subtle: '#29332B',
-          strong: '#3B4A3E',
+          subtle: '#30404A',
+          strong: '#3F5361',
         },
       },
       fontFamily: {
@@ -36,14 +36,7 @@ const config: Config = {
         mono: ['"DM Mono"', 'monospace'],
       },
       animation: {
-        'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float-slow': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
-        },
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },

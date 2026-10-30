@@ -9,7 +9,6 @@ export default function CustomCursor() {
   const [isFinePointer, setIsFinePointer] = useState(false);
 
   useEffect(() => {
-    // Only enable if pointer is fine (mouse, not touchscreen)
     const media = window.matchMedia('(pointer: fine)');
     setIsFinePointer(media.matches);
 
@@ -35,7 +34,7 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.documentElement.addEventListener('mouseleave', handleMouseLeave);
     document.documentElement.addEventListener('mouseenter', handleMouseEnter);
 
@@ -50,32 +49,24 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Precision Dot */}
       <div
         className="fixed top-0 left-0 pointer-events-none z-[9999] transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2"
-        style={{
-          transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
-        }}
+        style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
       >
         <div
           className={`rounded-full transition-all duration-150 ${
-            isPointer
-              ? 'w-3 h-3 bg-accent-primary ring-4 ring-accent-primary/20'
-              : 'w-2 h-2 bg-accent-primary'
+            isPointer ? 'w-2.5 h-2.5 bg-accent-primary ring-4 ring-accent-primary/20' : 'w-2 h-2 bg-accent-primary'
           }`}
         />
       </div>
 
-      {/* Trailing Reticle */}
       <div
         className="fixed top-0 left-0 pointer-events-none z-[9998] transition-transform duration-200 ease-out -translate-x-1/2 -translate-y-1/2"
-        style={{
-          transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
-        }}
+        style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
       >
         <div
-          className={`rounded-full border border-accent-primary/40 transition-all duration-300 ${
-            isPointer ? 'w-10 h-10 border-accent-primary/80 bg-accent-primary/5' : 'w-7 h-7'
+          className={`rounded-full border border-accent-primary/30 transition-all duration-300 ${
+            isPointer ? 'w-9 h-9 border-accent-primary/70 bg-accent-primary/5' : 'w-6 h-6'
           }`}
         />
       </div>
