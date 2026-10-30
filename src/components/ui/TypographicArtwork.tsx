@@ -84,7 +84,7 @@ export default function TypographicArtwork() {
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse" />
             <span className="text-accent-primary font-semibold tracking-wider uppercase text-[11px]">
-              MONOGRAM // ARCHETYPE
+              CURIOUS BY NATURE. BUILT TO CREATE.
             </span>
           </div>
           <span className="text-text-muted text-[11px] tracking-widest uppercase">
@@ -306,3 +306,4 @@ export default function TypographicArtwork() {
     </div>
   );
 }
+
