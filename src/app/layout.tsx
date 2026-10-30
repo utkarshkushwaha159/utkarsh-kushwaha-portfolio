@@ -3,7 +3,7 @@ import './globals.css';
 import CustomCursor from '@/components/ui/CustomCursor';
 import BackToTop from '@/components/ui/BackToTop';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://utkarsh-portfolio.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://utkarsh-kushwaha-portfolio.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
