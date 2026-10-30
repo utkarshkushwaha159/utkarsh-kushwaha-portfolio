@@ -2,6 +2,9 @@
 
 > A modern, premium developer portfolio engineered with Next.js 14 (App Router), TypeScript, and Tailwind CSS.
 
+🌐 **Live Website**: [https://utkarsh-kushwaha-portfolio.vercel.app](https://utkarsh-kushwaha-portfolio.vercel.app)  
+📦 **GitHub Repository**: [https://github.com/utkarshkushwaha159/utkarsh-kushwaha-portfolio](https://github.com/utkarshkushwaha159/utkarsh-kushwaha-portfolio)
+
 ---
 
 ## 🎨 Design System & Visual Identity
@@ -17,7 +20,7 @@
   - Muted Text: `#788A94`
   - Borders: `#30404A`
 - **Typography**: Space Grotesk (headings), Inter (body), DM Mono (code and technical tags)
-- **Design Philosophy**: Premium Minimalism, Modern Editorial Layouts, Clean Whitespace, and Responsive Performance.
+- **Signature Visual**: Bespoke UK Typographic Identity Artwork (`TypographicArtwork.tsx`) with interactive desktop parallax tilt.
 
 ---
 
@@ -25,10 +28,11 @@
 
 | Layer | Technologies |
 |---|---|
-| **Framework** | Next.js 14 (App Router, React Server Components & Static Site Generation) |
+| **Framework** | Next.js 14 (App Router, Server Components & Static Site Generation) |
 | **Language** | TypeScript 5 (Strict type checking) |
 | **Styling** | Tailwind CSS 3 with Centralized CSS Custom Properties |
 | **Icons** | Lucide React |
+| **Deployment** | Vercel (Edge Network & Global CDN) |
 | **SEO & Metadata** | Semantic HTML5, Schema.org Person & WebSite JSON-LD, Sitemap.xml, Robots.txt |
 | **Security** | Strict CSP, HSTS, X-Frame-Options, anti-spam honeypot, rate limiting |
 
@@ -53,7 +57,7 @@ UTKARSH_Portfolio/
 │   │   │   ├── Navbar.tsx                # Sticky header with active section tracking
 │   │   │   └── Footer.tsx                # 3-column minimal footer with back-to-top
 │   │   ├── sections/
-│   │   │   ├── HeroSection.tsx           # Clean typography, 2D code card & CTAs
+│   │   │   ├── HeroSection.tsx           # Clean typography, UK artwork & CTAs
 │   │   │   ├── AboutSection.tsx          # Education & background at NIET (8.54 CGPA)
 │   │   │   ├── SkillsSection.tsx         # Interactive categorized skill cards
 │   │   │   ├── ProjectsSection.tsx       # DCMS, Watt's Off, ATM Logger, IoT Smoke/Fire
@@ -66,7 +70,8 @@ UTKARSH_Portfolio/
 │   │       ├── CustomCursor.tsx          # Subtle desktop cyan reticle cursor
 │   │       ├── ProjectDetailModal.tsx    # Architectural deep-dive modal
 │   │       ├── SectionHeading.tsx        # Standardized minimal section headings
-│   │       └── TerminalBadge.tsx         # Clean rounded badges
+│   │       ├── TerminalBadge.tsx         # Clean rounded badges
+│   │       └── TypographicArtwork.tsx    # Bespoke UK typographic artwork
 │   ├── data/
 │   │   └── portfolioData.ts              # Single source of truth for portfolio records
 │   ├── lib/
@@ -102,10 +107,8 @@ UTKARSH_Portfolio/
 
 ---
 
-## 🌐 Deploy to Vercel (Free)
+## 🌐 Production Deployment
 
-1. Push your repository to GitHub (`utkarshkushwaha159`).
-2. Log in to [vercel.com](https://vercel.com) and import the repository.
-3. Framework Preset: **Next.js** (detected automatically).
-4. Root Directory: `./`
-5. Click **Deploy**. Your portfolio will be live with free global CDN and HTTPS.
+The project is continuously deployed to Vercel connected to the GitHub repository:
+- Push to branch `main` automatically triggers production builds.
+- Production environment variable: `NEXT_PUBLIC_SITE_URL=https://utkarsh-kushwaha-portfolio.vercel.app`
