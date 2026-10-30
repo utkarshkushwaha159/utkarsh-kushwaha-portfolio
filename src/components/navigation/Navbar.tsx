@@ -13,7 +13,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Simple active section detection
+      // Active section detection
       const sections = ['about', 'skills', 'projects', 'experience', 'achievements', 'education', 'contact'];
       const scrollPos = window.scrollY + 200;
 
