@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { ArrowDown, Github, Linkedin, Mail, FileText, Code2, Cpu, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import TerminalBadge from '@/components/ui/TerminalBadge';
+import TypographicArtwork from '@/components/ui/TypographicArtwork';
 import { PERSONAL_INFO } from '@/data/portfolioData';
 
 export default function HeroSection() {
@@ -112,73 +113,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Sophisticated 2D Modern Composition (5 cols) */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl border border-border-subtle bg-bg-secondary p-6 sm:p-7 shadow-2xl cyan-glow">
-              {/* Window Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-border-subtle mb-5">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                </div>
-                <div className="font-mono text-xs text-text-muted flex items-center gap-1.5">
-                  <Code2 className="w-3.5 h-3.5 text-accent-primary" />
-                  <span>developer.profile.ts</span>
-                </div>
-              </div>
-
-              {/* Code Snippet / Architectural Card Preview */}
-              <div className="space-y-4 font-mono text-xs sm:text-sm">
-                <div className="text-text-muted">
-                  <span className="text-accent-primary">const</span> engineer = &#123;
-                </div>
-
-                <div className="pl-4 space-y-1.5 text-text-secondary">
-                  <div>
-                    <span className="text-text-muted">name:</span>{' '}
-                    <span className="text-[#A9B8C0]">&apos;Utkarsh Kushwaha&apos;</span>,
-                  </div>
-                  <div>
-                    <span className="text-text-muted">degree:</span>{' '}
-                    <span className="text-accent-primary">&apos;B.Tech CSE @ NIET (AKTU)&apos;</span>,
-                  </div>
-                  <div>
-                    <span className="text-text-muted">cgpa:</span>{' '}
-                    <span className="text-accent-secondary font-bold">8.54</span>,
-                  </div>
-                  <div>
-                    <span className="text-text-muted">languages:</span> [
-                    <span className="text-text-primary">&apos;Java&apos;</span>,{' '}
-                    <span className="text-text-primary">&apos;Python&apos;</span>,{' '}
-                    <span className="text-text-primary">&apos;C/C++&apos;</span>,{' '}
-                    <span className="text-text-primary">&apos;JavaScript&apos;</span>],
-                  </div>
-                  <div>
-                    <span className="text-text-muted">hackathon:</span>{' '}
-                    <span className="text-accent-primary">&apos;SIH 2026 Top 45 Finalist&apos;</span>,
-                  </div>
-                  <div>
-                    <span className="text-text-muted">openSource:</span>{' '}
-                    <span className="text-text-primary">&apos;GSSoC 2026 Contributor&apos;</span>
-                  </div>
-                </div>
-
-                <div className="text-text-muted">&#125;;</div>
-              </div>
-
-              {/* Key Competency Indicators */}
-              <div className="mt-6 pt-5 border-t border-border-subtle grid grid-cols-2 gap-3 text-xs font-sans">
-                <div className="p-3 rounded-xl bg-bg-elevated/60 border border-border-subtle">
-                  <span className="text-text-muted block text-[11px] mb-0.5">Core Focus</span>
-                  <span className="font-semibold text-text-primary">Full-Stack &amp; Systems</span>
-                </div>
-                <div className="p-3 rounded-xl bg-bg-elevated/60 border border-border-subtle">
-                  <span className="text-text-muted block text-[11px] mb-0.5">Academic Progress</span>
-                  <span className="font-semibold text-accent-primary">Graduation 2029</span>
-                </div>
-              </div>
-            </div>
+          {/* Right Column: Custom UK Typographic Artwork (5 cols) */}
+          <div className="lg:col-span-5 relative flex items-center justify-center">
+            <TypographicArtwork />
           </div>
         </div>
 
