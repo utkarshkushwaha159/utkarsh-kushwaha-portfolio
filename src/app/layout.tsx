@@ -8,11 +8,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://utkarsh-kushwaha-po
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Utkarsh Kushwaha — Software Developer | Portfolio',
-    template: '%s | Utkarsh Kushwaha',
+    default: 'Utkarsh Kushwaha Portfolio',
+    template: '%s | Utkarsh Kushwaha Portfolio',
   },
   description:
-    'Utkarsh Kushwaha is a B.Tech Computer Science student at NIET (AKTU) with an 8.54 CGPA, software developer, hackathon finalist (SIH 2026), and open-source contributor (GSSoC 2026). Explore engineered systems and projects.',
+    'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
   keywords: [
     'Utkarsh Kushwaha',
     'Utkarsh Kushwaha Portfolio',
@@ -37,16 +37,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    title: 'Utkarsh Kushwaha — Software Developer | Portfolio',
+    title: 'Utkarsh Kushwaha Portfolio',
     description:
-      'Personal portfolio of Utkarsh Kushwaha, B.Tech CSE student at NIET Greater Noida (AKTU). Software developer and problem solver.',
-    siteName: 'Utkarsh Kushwaha — Portfolio',
+      'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
+    siteName: 'Utkarsh Kushwaha Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Utkarsh Kushwaha — Software Developer',
+    title: 'Utkarsh Kushwaha Portfolio',
     description:
-      'Computer Science Undergraduate | Software Developer | Hackathon Finalist | Open Source Contributor',
+      'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
   },
   robots: {
     index: true,
@@ -79,7 +79,7 @@ export default function RootLayout({
         name: 'Utkarsh Kushwaha',
         jobTitle: 'Software Developer',
         description:
-          'B.Tech Computer Science & Engineering student at NIET Greater Noida, hackathon finalist, and open source contributor.',
+          'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
         url: siteUrl,
         sameAs: [
           'https://www.linkedin.com/in/utkarsh-kk',
@@ -105,8 +105,9 @@ export default function RootLayout({
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         url: siteUrl,
-        name: 'Utkarsh Kushwaha — Portfolio',
-        description: 'Personal portfolio of software developer Utkarsh Kushwaha',
+        name: 'Utkarsh Kushwaha Portfolio',
+        description:
+          'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
         publisher: {
           '@id': `${siteUrl}/#person`,
         },

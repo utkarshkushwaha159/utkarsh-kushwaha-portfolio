@@ -1,6 +1,5 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Navbar from '@/components/navigation/Navbar';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
@@ -11,6 +10,28 @@ import AchievementsSection from '@/components/sections/AchievementsSection';
 import EducationSection from '@/components/sections/EducationSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/navigation/Footer';
+
+export const metadata: Metadata = {
+  title: 'Utkarsh Kushwaha Portfolio',
+  description:
+    'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Utkarsh Kushwaha Portfolio',
+    description:
+      'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
+    url: 'https://utkarsh-kushwaha-portfolio.vercel.app',
+    siteName: 'Utkarsh Kushwaha Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Utkarsh Kushwaha Portfolio',
+    description:
+      'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
+  },
+};
 
 export default function HomePage() {
   return (

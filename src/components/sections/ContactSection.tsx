@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { PERSONAL_INFO } from '@/data/portfolioData';
-import { Mail, Copy, Check, Send, Github, Linkedin, ExternalLink, AlertCircle } from 'lucide-react';
+import { Mail, Copy, Check, Send, Github, Linkedin, ExternalLink, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -25,6 +25,38 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side pre-validation
+    const cleanName = formData.name.trim();
+    const cleanEmail = formData.email.trim();
+    const cleanSubject = formData.subject.trim();
+    const cleanMessage = formData.message.trim();
+
+    if (cleanName.length < 2) {
+      setStatus('error');
+      setStatusMessage('Please enter your full name (at least 2 characters).');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!cleanEmail || !emailRegex.test(cleanEmail)) {
+      setStatus('error');
+      setStatusMessage('Please enter a valid email address.');
+      return;
+    }
+
+    if (cleanSubject.length < 3) {
+      setStatus('error');
+      setStatusMessage('Please enter a subject (at least 3 characters).');
+      return;
+    }
+
+    if (cleanMessage.length < 10) {
+      setStatus('error');
+      setStatusMessage('Please provide a message with at least 10 characters.');
+      return;
+    }
+
     setStatus('submitting');
     setStatusMessage('');
 
@@ -32,21 +64,36 @@ export default function ContactSection() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: cleanName,
+          email: cleanEmail,
+          subject: cleanSubject,
+          message: cleanMessage,
+          _hp: formData._hp,
+        }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+
       if (res.ok && data.success) {
         setStatus('success');
-        setStatusMessage(data.message || 'Message sent successfully. I will get back to you shortly.');
+        setStatusMessage(
+          data.message || 'Thank you! Your message has been sent successfully. I will get back to you shortly.'
+        );
+        // Reset form ONLY on confirmed success
         setFormData({ name: '', email: '', subject: '', message: '', _hp: '' });
       } else {
         setStatus('error');
-        setStatusMessage(data.error || 'Failed to send message. Please reach out directly via email.');
+        setStatusMessage(
+          data.error ||
+            'Unable to deliver message at this time. Please send an email directly to hey.utkarsh.tech@gmail.com.'
+        );
       }
     } catch {
       setStatus('error');
-      setStatusMessage('Network interruption. Please copy the email address and write directly.');
+      setStatusMessage(
+        'Network error encountered. Please check your connection or email hey.utkarsh.tech@gmail.com directly.'
+      );
     }
   };
 
@@ -171,10 +218,11 @@ export default function ContactSection() {
                       id="form-name"
                       type="text"
                       required
+                      disabled={status === 'submitting'}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Jane Doe"
-                      className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary disabled:opacity-60 transition-colors"
                     />
                   </div>
 
@@ -186,10 +234,11 @@ export default function ContactSection() {
                       id="form-email"
                       type="email"
                       required
+                      disabled={status === 'submitting'}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="name@organization.com"
-                      className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary disabled:opacity-60 transition-colors"
                     />
                   </div>
                 </div>
@@ -202,10 +251,11 @@ export default function ContactSection() {
                     id="form-subject"
                     type="text"
                     required
+                    disabled={status === 'submitting'}
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder="e.g. Software Engineering Internship Inquiry"
-                    className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary disabled:opacity-60 transition-colors"
                   />
                 </div>
 
@@ -217,10 +267,11 @@ export default function ContactSection() {
                     id="form-message"
                     required
                     rows={4}
+                    disabled={status === 'submitting'}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Write your message here..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary transition-colors resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-bg-elevated border border-border-subtle font-sans text-sm text-text-primary placeholder:text-text-muted/60 focus:outline-none focus:border-accent-primary disabled:opacity-60 transition-colors resize-none"
                   />
                 </div>
 
@@ -242,10 +293,13 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent-primary text-bg-primary font-heading text-sm font-bold tracking-wide hover:bg-accent-secondary disabled:opacity-50 transition-colors shadow-md"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent-primary text-bg-primary font-heading text-sm font-bold tracking-wide hover:bg-accent-secondary disabled:opacity-50 transition-colors shadow-md cursor-pointer disabled:cursor-not-allowed"
                 >
                   {status === 'submitting' ? (
-                    <span>Sending...</span>
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending Message...</span>
+                    </>
                   ) : (
                     <>
                       <span>Send Message</span>
