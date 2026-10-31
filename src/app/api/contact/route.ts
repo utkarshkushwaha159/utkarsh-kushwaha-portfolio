@@ -121,10 +121,13 @@ export async function POST(req: Request) {
     const formattedTimestamp = submissionDate.toUTCString();
 
     // 5. Check Resend API configuration
-    const resendApiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.CONTACT_TO_EMAIL || 'hey.utkarsh.tech@gmail.com';
-    // By default onboarding@resend.dev allows testing immediately before a custom domain is verified
-    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'Utkarsh Portfolio <onboarding@resend.dev>';
+    const resendApiKey = process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.trim() : '';
+    const toEmail = (process.env.CONTACT_TO_EMAIL || 'hey.utkarsh.tech@gmail.com').trim();
+    const rawFrom = process.env.CONTACT_FROM_EMAIL ? process.env.CONTACT_FROM_EMAIL.trim() : '';
+    // Format fromEmail cleanly: handles both "onboarding@resend.dev" and "Name <onboarding@resend.dev>"
+    const fromEmail = rawFrom
+      ? (rawFrom.includes('<') ? rawFrom : `Portfolio Contact <${rawFrom}>`)
+      : 'Portfolio Contact <onboarding@resend.dev>';
 
     if (!resendApiKey) {
       console.warn('[CONTACT_API] Missing RESEND_API_KEY environment variable.');
