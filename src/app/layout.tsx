@@ -7,10 +7,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://utkarsh-kushwaha-po
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: 'Utkarsh Kushwaha Portfolio',
-    template: '%s | Utkarsh Kushwaha Portfolio',
-  },
+  title: 'Utkarsh Kushwaha Portfolio',
   description:
     'Explore the portfolio of Utkarsh Kushwaha, a B.Tech Computer Science student at NIET (AKTU). Discover technical projects, programming skills, hackathon achievements, open-source contributions and experience.',
   keywords: [
@@ -61,6 +58,16 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'KzO0kU07lK3Uj5cdtNuU_7j8NU5XwSuCPv9vrn2ro3Q',
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
