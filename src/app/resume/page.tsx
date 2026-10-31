@@ -65,10 +65,10 @@ export default function ResumePage() {
             </div>
             <div className="mt-1 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs sm:text-[12.5px] text-gray-800 font-serif">
               <a
-                href="mailto:utkarshkushwaha6307@gmail.com"
+                href="mailto:hey.utkarsh.tech@gmail.com"
                 className="text-gray-900 hover:underline"
               >
-                utkarshkushwaha6307@gmail.com
+                hey.utkarsh.tech@gmail.com
               </a>
               <span>•</span>
               <a

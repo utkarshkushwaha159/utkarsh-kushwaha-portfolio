@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
     'Problem Solver',
   ],
   status: 'Open to Software Engineering Internships & Opportunities',
-  email: 'utkarshkushwaha6307@gmail.com',
+  email: 'hey.utkarsh.tech@gmail.com',
   github: 'https://github.com/utkarshkushwaha159',
   linkedin: 'https://www.linkedin.com/in/utkarsh-kk',
   intro:
